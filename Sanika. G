@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sanika ♡</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0; color:#fff1f5;
+ font-family:Georgia,serif;
+ background:radial-gradient(ellipse at top,#713d60,#301d35 55%,#17121f);
+ text-align:center;
+}
+.screen{
+ min-height:100vh; display:none;
+ align-items:center; justify-content:center;
+ padding:25px 18px;
+}
+.screen.active{display:flex;animation:fade .8s}
+.card{
+ width:100%;max-width:540px;padding:38px 22px;
+ border:1px solid #f8dca066;border-radius:26px;
+ background:#ffffff08;
+ box-shadow:0 0 45px #f4a6b822;
+}
+.small{
+ font:11px Arial,sans-serif;letter-spacing:4px;
+ color:#f8dca0;text-transform:uppercase;
+}
+h1{font-size:clamp(40px,10vw,65px);font-weight:normal}
+h2{font-size:35px;font-weight:normal}
+.name{
+ background:linear-gradient(90deg,#ffe8bb,#f4a6c2,#fff0d6);
+ -webkit-background-clip:text;color:transparent;
+}
+p{font-size:17px;line-height:1.8;color:#f4dce8}
+.script{font-style:italic;color:#f7b6cd}
+button{
+ border:0;border-radius:30px;padding:15px 22px;
+ background:linear-gradient(120deg,#ffe2ac,#f0a8c1);
+ color:#3c2138;font-weight:bold;font-size:14px;
+ margin-top:16px;cursor:pointer;
+ box-shadow:0 0 25px #f4a6b844;
+}
+button:active{transform:scale(.97)}
+.star{
+ position:fixed;color:#fff1c9;pointer-events:none;
+ animation:twinkle 2s infinite alternate;
+}
+@keyframes twinkle{to{opacity:.15;transform:scale(.5)}}
+@keyframes fade{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+@keyframes float{50%{transform:translateY(-12px)}}
+.cake{font-size:75px;animation:float 2.5s infinite}
+.confetti{
+ position:fixed;top:-15px;width:7px;height:12px;
+ animation:fall 3s linear forwards;pointer-events:none;
+}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+.photo{
+ width:100%;max-width:330px;max-height:350px;
+ object-fit:contain;border:1px solid #f8dca0;
+ border-radius:16px;padding:8px;margin-top:18px;
+}
+#photoArea{display:none}
+</style>
+</head>
+
+<body>
+<div id="stars"></div>
+
+<section class="screen active" id="s1">
+ <div class="card">
+  <div class="small">A little page made with love</div>
+  <p>✧ ♡ ✧</p>
+  <h1>For <span class="name">Sanika</span></h1>
+  <p class="script">Some people make ordinary days feel magical.</p>
+  <p id="shayari">[Your shayari will be added here ✨]</p>
+  <button onclick="go(2)">Open Your Surprise ♡</button>
+  <p class="small">01 · MADE JUST FOR YOU</p>
+ </div>
+</section>
+
+<section class="screen" id="s2">
+ <div class="card">
+  <div class="small">A little magic is coming</div>
+  <h2>Ready, <span class="script">Birthday Girl?</span></h2>
+  <p>May your life always shine brighter than the stars.</p>
+  <p>✨ 🌷 ✨</p>
+  <button onclick="go(3);party()">Make The Magic Happen ✨</button>
+ </div>
+</section>
+
+<section class="screen" id="s3">
+ <div class="card">
+  <div class="small">Today is all about you</div>
+  <div class="cake">🎂</div>
+  <h1>Happy Birthday</h1>
+  <h1 class="name">Sanika ♡</h1>
+  <p class="script">May this new chapter bring you love, peace and beautiful memories.</p>
+  <button onclick="go(4)">One More Surprise →</button>
+ </div>
+</section>
+
+<section class="screen" id="s4">
+ <div class="card">
+  <div class="small">A tiny memory corner</div>
+  <h2>Special Surprise<br><span class="script">For You ♡</span></h2>
+  <p>Tap below to open your surprise.</p>
+  <button onclick="openPhoto()">Touch For Your Surprise 🎁</button>
+
+  <div id="photoArea">
+   <img class="photo"
+    src="sanika-photo.jpg"
+    alt="A special memory for Sanika"
+    onerror="this.style.display='none';document.getElementById('photoHelp').style.display='block'">
+   <p id="photoHelp" style="display:none">
+    Upload your photo into this repository and name it
+    <b>sanika-photo.jpg</b>
+   </p>
+   <p class="script">One photo, a thousand memories. ♡</p>
+   <p id="message">[Your special birthday message goes here 💗]</p>
+  </div>
+  <p class="small">WITH LOVE, ALWAYS ✧</p>
+ </div>
+</section>
+
+<script>
+const starBox=document.getElementById("stars");
+for(let i=0;i<75;i++){
+ let s=document.createElement("span");
+ s.className="star";s.textContent="✦";
+ s.style.left=Math.random()*100+"%";
+ s.style.top=Math.random()*100+"%";
+ s.style.animationDelay=Math.random()*3+"s";
+ starBox.appendChild(s);
+}
+function go(n){
+ document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
+ document.getElementById("s"+n).classList.add("active");
+ window.scrollTo(0,0);
+}
+function party(){
+ const colors=["#ffe8bb","#f4a6c2","#ffffff","#d9a6d8"];
+ for(let i=0;i<100;i++){
+  let c=document.createElement("span");
+  c.className="confetti";
+  c.style.left=Math.random()*100+"%";
+  c.style.background=colors[Math.floor(Math.random()*colors.length)];
+  c.style.animationDelay=Math.random()+"s";
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),4000);
+ }
+}
+function openPhoto(){
+ document.getElementById("photoArea").style.display="block";
+ party();
+}
+</script>
+</body>
+</html>
